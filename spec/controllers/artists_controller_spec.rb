@@ -64,6 +64,20 @@ RSpec.describe ArtistsController, type: :controller do
         expect(response).to redirect_to(Artist.last)
       end
     end
+
+    context "with invalid params" do
+      it "assigns a newly created but unsaved artist as @artist" do
+        post :create, {:artist => attributes_for(:artist, name: nil)}
+
+        expect(assigns(:artist)).to be_a_new(Artist)
+      end
+
+      it "re-renders the 'new' template" do
+        post :create, {:artist => attributes_for(:artist, name: nil)}
+
+        expect(response).to render_template("new")
+      end
+    end
   end
 
 end
