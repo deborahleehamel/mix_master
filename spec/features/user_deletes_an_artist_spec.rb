@@ -9,5 +9,6 @@ RSpec.feature "User can delete existing artist" do
 
     expect(current_path).to eq artists_path
     expect(page).to_not have_content artist.name
+    expect(page).to_not have_css("img[src=\"#{artist.image_path}\"]")
   end
 end
