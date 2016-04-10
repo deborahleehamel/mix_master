@@ -127,4 +127,22 @@ RSpec.describe ArtistsController, type: :controller do
     end
   end
 
+  describe "DELETE #destroy" do
+    it "destroys the requested artist" do
+      artist = create(:artist)
+
+      expect{
+        delete :destroy, {:id => artist.to_param}
+      }.to change(Artist, :count).by(-1)
+    end
+
+    it "redirects to the artists list" do
+      artist = create(:artist)
+
+      delete :destroy, {:id => artist.to_param}
+
+      expect(response).to redirect_to(artists_path)
+    end
+  end
+
 end
