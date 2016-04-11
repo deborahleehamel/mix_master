@@ -82,6 +82,14 @@ RSpec.describe ArtistsController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
+      it "assigns the requested artist as @artist" do
+        artist = create(:artist)
+
+        put :update, {:id => artist.to_param, :artist => attributes_for(:artist)}
+
+        expect(assigns(:artist)).to eq(artist)
+      end
+
       it "updates the requested artist" do
         artist = create(:artist)
 
@@ -91,18 +99,10 @@ RSpec.describe ArtistsController, type: :controller do
         expect(artist.name).to eq("New name")
       end
 
-      it "assigns the requested artist as @artist" do
-        artist = create(:artist)
-
-        put :update, {:id => artist.to_param, :artist => attributes_for(:artist, name: "New name")}
-
-        expect(assigns(:artist)).to eq(artist)
-      end
-
       it "redirects to the artist" do
         artist = create(:artist)
 
-        put :update, {:id => artist.to_param, :artist => attributes_for(:artist, name: "New name")}
+        put :update, {:id => artist.to_param, :artist => attributes_for(:artist)}
 
         expect(response).to redirect_to(artist)
       end
