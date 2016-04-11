@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Unicorn as the app server
 gem 'unicorn'
+gem 'omniauth-oauth2'
+gem "figaro"
 
 
 # Use Capistrano for deployment
@@ -49,4 +51,5 @@ end
 
 group :production do
 gem 'rails_12factor'
+
 end
