@@ -16,6 +16,14 @@ def show
   @song = Song.find(params[:id])
 end
 
+# def index
+#   if params[:artist_id]
+#     @songs = Artist.find(paarams[:artist_id]).songs
+#   else
+#     @songs = Song.all
+#   end
+# end
+
 
 private
 
